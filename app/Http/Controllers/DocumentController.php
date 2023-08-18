@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestDocumentStore;
 use App\Models\Document;
+use App\Models\Type;
 use App\Repositories\DocumentRepository;
 use Exception;
 use Illuminate\Http\Request;
@@ -33,8 +34,10 @@ class DocumentController extends Controller
 
         if ($request->wantsJson())
             return ($documents);
+        
+        $types = Type::all();
 
-        return view('documents', compact('documents'));
+        return view('documents', compact('documents', 'types'));
 
     }
 
