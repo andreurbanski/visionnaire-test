@@ -10,7 +10,14 @@
 			"name": "index",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
 					"raw": "{{HOST}}/api/",
 					"host": [

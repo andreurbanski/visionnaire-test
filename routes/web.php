@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [DocumentController::class, 'index'])->name('index');
+Route::get('/fodase', [DocumentController::class, 'index'])->name('index');
 
 

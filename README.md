@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>My Laravel Application</title>
+  My Laravel Application
 </head>
 
 <body>
@@ -31,7 +31,7 @@ cd visionnaire-test</code></pre>
 php artisan key:generate</code></pre>
   </li>
 
-  <li>Create a local filedatabase:
+  <li>Create a local file database:
   <pre><code>touch database/database.sqlite</code></pre>
   <li>Migrate and Seed Database:
     <pre><code>php artisan migrate
@@ -50,7 +50,7 @@ php artisan db:seed --class=DocumentSeeder</code></pre>
 <p>To interact with the system's endpoints, you can use the provided Postman collection. The collection includes predefined API requests that you can use for querying the application.</p>
 
 <ol>
-  <li>Import the Postman collection: <code>your-laravel-app.postman_collection.json</code>.</li>
+  <li>Import the Postman collection: <code>Test-Laravel.postman_collection.json</code>.</li>
   <li>Configure Postman environment variables as needed (base URL, authentication, etc.).</li>
   <li>Use the imported requests to test the different endpoints of the application.</li>
 </ol>

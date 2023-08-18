@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestDocumentStore;
 use App\Models\Document;
+use App\Repositories\DocumentRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -15,18 +16,24 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DocumentController extends Controller
 {
     var $document;
+    var $repository;
 
     public function __construct()
     {
+        // Singleton
         $this->document = new Document();
+        $this->repository = new DocumentRepository;
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $documents = $this->document->all();
-        return ($documents);
+        $documents = $this->repository->getAll();
+
+        if ($request->wantsJson())
+            return ($documents);
+
         return view('documents', compact('documents'));
 
     }
@@ -53,7 +60,7 @@ class DocumentController extends Controller
     public function show(Request $request, Int $id) : JsonResponse
     {
         try {
-            $this->document = $this->document->find($id);
+            $this->document = $this->repository->getById($id);
 
             if(empty($this->document)) {
                 throw new NotFoundHttpException();
@@ -74,7 +81,7 @@ class DocumentController extends Controller
     public function generate_pdf(Request $request, Int $id)
     {
         try {
-            $this->document = $this->document->find($id);
+            $this->document = $this->repository->getById($id);
 
             if(empty($this->document)) {
                 throw new NotFoundHttpException();
@@ -100,7 +107,7 @@ class DocumentController extends Controller
     public function update(Request $request) : JsonResponse
     {
         try {
-            $this->document = $this->document->find($request->input('id'));
+            $this->document = $this->repository->getById($request->input('id'));
             if(empty($this->document)) {
                 throw new NotFoundHttpException();
             }
@@ -122,7 +129,7 @@ class DocumentController extends Controller
     public function destroy(Request $request, Int $id) : JsonResponse
     {
         try {
-            $this->document = $this->document->find($id);
+            $this->document = $this->repository->getById($id);
 
             if(empty($this->document)) {
                 throw new NotFoundHttpException();
