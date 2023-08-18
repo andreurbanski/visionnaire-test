@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(json_decode($document->values, true) as $param)
+                                @foreach($document->values as $param)
                                     @php
                                         $key = key($param);
                                         $value = reset($param);
