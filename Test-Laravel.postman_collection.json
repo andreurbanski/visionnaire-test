@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "e0bb89d9-68d2-4ad5-85f2-e498e642947b",
+		"name": "Test-Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6396071"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/show/1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"show",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generate_pdf",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/generate_pdf/2",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"generate_pdf",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"test_postman_store\",\n        \"type_id\" : 1,\n        \"values\": [\n            {\n                \"title\": \"test_postman_store\"\n            },\n            {\n                \"year\": 1900\n            },\n            {\n                \"author\": \"test_postman_store\"\n            }\n        ]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/store",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\" : 4,\n        \"name\": \"newly updated\",\n        \"type_id\" : 1,\n        \"values\": [\n            {\n                \"title\": \"The Great Gatsby\"\n            },\n            {\n                \"year\": 1925\n            },\n            {\n                \"author\": \"F. Scott Fitzgerald\"\n            }\n        ]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/update",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/delete/4",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
