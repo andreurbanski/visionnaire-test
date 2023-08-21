@@ -95,7 +95,7 @@ class documentSeeder extends Seeder
                 'id' => $type['id'],
                 'name' => $type['name'],
             ]);
-            $type->save();
+           // $type->save();
 
         }
 

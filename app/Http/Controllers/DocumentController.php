@@ -33,7 +33,7 @@ class DocumentController extends Controller
         $documents = $this->repository->getAll();
 
         if ($request->wantsJson())
-            return ($documents);
+            return response()->json(data:$documents);
         
         $types = Type::all();
 
@@ -111,6 +111,7 @@ class DocumentController extends Controller
     {
         try {
             $this->document = $this->repository->getById($request->input('id'));
+
             if(empty($this->document)) {
                 throw new NotFoundHttpException();
             }

@@ -15,16 +15,18 @@ class ExampleTest extends TestCase
 {
     use RefreshDatabase;
 
+    
     /**
-     * Test the Ajax Index action
-     */
+    * Test the Index action
+    */
     /** @test */
-    public function test_index(): void
+    public function test_index_html(): void
     {
         $controller = new DocumentController();
-        $response = $controller->index();
+        $request = new Request();
+        $response = $controller->index($request);
 
-        $this->assertJson($response);
+        $this->assertStringContainsString('List of Documents', $response);
     }
 
     /**
